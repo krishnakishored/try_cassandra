@@ -15,15 +15,12 @@ target_compile_features(trycassandra PRIVATE cxx_std_14)
 #        HINTS ../external
 
 # )
-# add_library()
 
 # Note that the namespaced target will always be available regardless of the import method
-# target_link_libraries(trycassandra PRIVATE libcassandra.2.12.0)
-
 
 # Your-external "mylib", add GLOBAL if the imported library is located in directories above the current.
 # add_library(libcassandra.2.12.0.dylib SHARED IMPORTED GLOBAL )
-add_library(libcassandra.2.12.0.dylib SHARED IMPORTED)
+add_library(libcassandra SHARED IMPORTED)
 # You can define two import-locations: one for debug and one for release.
-set_target_properties( libcassandra.2.12.0.dylib PROPERTIES IMPORTED_LOCATION ${CMAKE_BINARY_DIR}/external/cpp-driver/libcassandra.2.12.0.dylib)
-target_link_libraries(trycassandra libcassandra.2.12.0.dylib)
+set_target_properties( libcassandra PROPERTIES IMPORTED_LOCATION ${CMAKE_BINARY_DIR}/external/cpp-driver/libcassandra.2.12.0.dylib)
+target_link_libraries(trycassandra libcassandra)
